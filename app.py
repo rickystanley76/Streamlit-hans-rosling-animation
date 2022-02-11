@@ -35,11 +35,8 @@ st.write(animated_scatter)
 
 
 st.header('Who is Hans Rosling?')
-
-head_col1, head_col2 = st.columns(2)
-with head_col1:
-    st.subheader("From Wikipedia: ")  
-    st.write("""Hans Rosling (Swedish pronunciation: [ˈhɑːns ˈrûːslɪŋ]; 27 July 1948 – 7 February 2017) was a Swedish physician, 
+st.subheader("From Wikipedia: ")  
+st.write("""Hans Rosling (Swedish pronunciation: [ˈhɑːns ˈrûːslɪŋ]; 27 July 1948 – 7 February 2017) was a Swedish physician, 
             academic, and public speaker. He was a professor of international health at Karolinska Institute[4] and 
             was the co-founder and chairman of the Gapminder Foundation, which developed the Trendalyzer software system. 
             He held presentations around the world, including several TED Talks[5] in which he promoted the use of data 
@@ -47,10 +44,7 @@ with head_col1:
             coauthored with his daughter-in-law Anna Rosling Rönnlund and son Ola Rosling, became an international bestseller.[7]""")
           
    
-with head_col2:
-    showpicture = st.checkbox('Like to see his picture: ')
-    if showpicture: 
-        st.image("hans.jpg")
+
    
 
 
