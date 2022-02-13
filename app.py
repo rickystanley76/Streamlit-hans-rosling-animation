@@ -33,17 +33,17 @@ st.write(animated_scatter)
 ##################
 
 
+showtext= st.checkbox("Who is Hans Rosling?")
 
-st.header('Who is Hans Rosling?')
-st.subheader("From Wikipedia: ")  
-st.write("""Hans Rosling (Swedish pronunciation: [ˈhɑːns ˈrûːslɪŋ]; 27 July 1948 – 7 February 2017) was a Swedish physician, 
+if showtext:
+    st.subheader("From Wikipedia: ")  
+    st.write("""Hans Rosling (Swedish pronunciation: [ˈhɑːns ˈrûːslɪŋ]; 27 July 1948 – 7 February 2017) was a Swedish physician, 
             academic, and public speaker. He was a professor of international health at Karolinska Institute[4] and 
             was the co-founder and chairman of the Gapminder Foundation, which developed the Trendalyzer software system. 
             He held presentations around the world, including several TED Talks[5] in which he promoted the use of data 
             (and data visualization) to explore development issues.[6] His posthumously published book Factfulness, 
             coauthored with his daughter-in-law Anna Rosling Rönnlund and son Ola Rosling, became an international bestseller.[7]""")
           
-   
 
    
 
