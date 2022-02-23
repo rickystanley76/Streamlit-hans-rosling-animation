@@ -9,10 +9,28 @@ Hans Rosling Gapminder
 import plotly_express as px
 import pandas as pd 
 import streamlit as st
+import time
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Hans Rosling's Iconic Animated Motion Chart", page_icon=":purple_heart:", layout= "wide")
 
+st.header('Data visualization of Gapminder dataset from Has Rosling:')
+
+with st.expander("Who is Hans Rosling?"):
+    col1, col2 = st.columns(2)
+
+    with col1:
+     st.write("""
+        ***Hans Rosling*** (Swedish pronunciation: [ˈhɑːns ˈrûːslɪŋ]; 27 July 1948 – 7 February 2017) was a Swedish physician, 
+        academic, and public speaker. He was a professor of international health at Karolinska Institute[4] and 
+        was the co-founder and chairman of the Gapminder Foundation, which developed the Trendalyzer software system. 
+        He held presentations around the world, including several TED Talks[5] in which he promoted the use of data 
+        (and data visualization) to explore development issues.[6] His posthumously published book Factfulness, 
+        coauthored with his daughter-in-law Anna Rosling Rönnlund and son Ola Rosling, became an international bestseller.[7]
+     """)
+
+    with col2:
+        st.image("https://www.unhcr.org/neu/wp-content/uploads/sites/15/2016/10/rosling1_01.png")
 
 ### --- LOAD DATAFRAME
 gapminder = px.data.gapminder()
@@ -22,7 +40,17 @@ year = gapminder['year'].unique().tolist()
 continent = gapminder['continent'].unique().tolist()
 ################################################
 
-st.header('Scatter plot animation using Gapminder dataset!')
+st.subheader('Scatter plot animation using Gapminder dataset!')
+st.markdown('''
+---
+''')
+
+my_bar = st.progress(0)
+
+for percent_complete in range(100):
+     time.sleep(0.1)
+     my_bar.progress(percent_complete + 1)
+
 ## Scatter plot animation
 
 animated_scatter= px.scatter(gapminder, x="gdpPercap", y="lifeExp", animation_frame="year", animation_group="country",
@@ -33,17 +61,7 @@ st.write(animated_scatter)
 ##################
 
 
-showtext= st.checkbox("Who is Hans Rosling?")
 
-if showtext:
-    st.subheader("From Wikipedia: ")  
-    st.write("""Hans Rosling (Swedish pronunciation: [ˈhɑːns ˈrûːslɪŋ]; 27 July 1948 – 7 February 2017) was a Swedish physician, 
-            academic, and public speaker. He was a professor of international health at Karolinska Institute[4] and 
-            was the co-founder and chairman of the Gapminder Foundation, which developed the Trendalyzer software system. 
-            He held presentations around the world, including several TED Talks[5] in which he promoted the use of data 
-            (and data visualization) to explore development issues.[6] His posthumously published book Factfulness, 
-            coauthored with his daughter-in-law Anna Rosling Rönnlund and son Ola Rosling, became an international bestseller.[7]""")
-          
 
    
 
