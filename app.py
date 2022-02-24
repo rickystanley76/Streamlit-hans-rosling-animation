@@ -3,13 +3,14 @@
 Created on Thu Feb 10 11:34:26 2022
 
 @author: Ricky D Cruze
-Hans Rosling Gapminder
+Used dataset: Hans Rosling Gapminder Dataset
 """
 
 import plotly_express as px
 import pandas as pd 
 import streamlit as st
 import time
+import numpy as np 
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Hans Rosling's Iconic Animated Motion Chart", page_icon=":purple_heart:", layout= "wide")
@@ -59,6 +60,24 @@ animated_scatter= px.scatter(gapminder, x="gdpPercap", y="lifeExp", animation_fr
 st.write(animated_scatter)
 
 ##################
+
+## Sunburst
+st.subheader('Sunburst for year 2007')
+st.markdown('''
+---
+''')
+
+gapminder_2007=gapminder.query("year == 2007")
+
+sunburst_2007= px.sunburst(gapminder_2007,path=['continent', 'country'], values='pop',
+                  color='lifeExp', hover_data=['iso_alpha'],
+                  color_continuous_scale='RdBu',
+                  color_continuous_midpoint=np.average(gapminder_2007['lifeExp'], weights=gapminder_2007['pop']))
+
+st.write(sunburst_2007)
+
+
+
 
 
 
